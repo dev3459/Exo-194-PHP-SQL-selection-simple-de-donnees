@@ -17,6 +17,8 @@
         $database = 'bdd_cours';
 
         $bdd = new PDO("mysql:host=$server;dbname=$database;charset=utf8", "$username", $password);
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
         $request = $bdd->prepare("SELECT * FROM user");
         $request->execute();
